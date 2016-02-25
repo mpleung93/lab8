@@ -1,6 +1,6 @@
 function initCamera() {
-  capture($('#camera-canvas'),
-          $('#camera-video'),
+  capture($('#camera-video'),
+          $('#camera-canvas'),
           $('#camera-button'));
 }
 
@@ -23,8 +23,19 @@ function capture(video, canvas, snapshotButton) {
         canvas.attr('width', width);
         canvas.attr('height', height);
         ctx.drawImage(video[0], 0, 0, width, height);
+        showImage();
+     //   $('#photo').attr('src', img);
+
     });
   };
+
+  var showImage = function () {
+    var img  = canvas[0].toDataURL('image/webp');
+    $('#photo').attr('src', img);
+
+//    image.style.display = "block";
+  };
+
 
   var errorCallback = function() {
     //The error callback function. If getUserMedia errored, print that
